@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --text-shadow-main: rgba(0, 0, 0, 0.85) 2.95px 2.95px 4.6px;
+  --drop-shadow-main: drop-shadow(2px 2px 2px #000000);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+}
+
+body {
+  background-image: url("../public/bg.jpg");
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  margin-top: 50px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 5px;
+  font-size: 1.3rem;
+  text-shadow: var(--text-shadow-main);
+}
+
+.logo-container img {
+  width: 80px;
+  height: auto;
+  filter: var(--drop-shadow-main);
+}
+
+#txtLocation {
+  width: 400px;
+  border-radius: 150px;
+  background: rgba(61, 61, 61, 0.3);
+  height: 35px;
+  padding: 15px;
+  color: rgb(196, 196, 196);
+  text-align: center;
+  border: none;
+  backdrop-filter: blur(30px);
+  font-weight: bold;
+  outline: none;
+  transition: 0.15s;
+  font-size: 1.05rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  width: min(500px, 85vw);
+}
+
+#txtLocation:hover {
+  background: #29292917;
+}
+
+#txtLocation:focus::placeholder {
+  color: transparent;
+}
+
+#txtLocation::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+#loader {
+  transition: 0.2s;
+  /* scale: 0;
+  opacity: 0; */
+  margin-top: 20px;
+  width: 30px;
+  height: auto;
+  animation: loading 1.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+.searchbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#btnSearch {
+  position: absolute;
+  right: 0;
+  transform: translateX(-55%);
+  border-left: 1px solid #cccccc3b;
+  filter: var(--drop-shadow-main);
+  padding-left: 10px;
+  height: 20px;
+  width: auto;
+}
+
+#btnSearch:hover {
+  cursor: pointer;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg) translateY(-2px);
+  }
+
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
+}

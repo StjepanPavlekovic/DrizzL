@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DrizzL Forecast</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="search">
+        <div class="logo-container">
+          <img src="../public/logo.png" />
+          <h1>DrizzL</h1>
+        </div>
+        <div class="searchbox">
+          <input
+            id="txtLocation"
+            type="text"
+            maxlength="20"
+            placeholder="Search weather for location"
+          />
+          <img id="btnSearch" src="../public/search.svg" />
+        </div>
+        <img id="loader" src="../public/loader.png" />
+      </div>
+      <div class="container"></div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
