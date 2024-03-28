@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="search">
+      <div class="search hidden">
         <div class="logo-container">
           <img src="../public/logo.png" />
           <h1>DrizzL</h1>
@@ -18,13 +18,17 @@
             id="txtLocation"
             type="text"
             maxlength="20"
-            placeholder="Search weather for location"
+            placeholder="Look up weather for location"
           />
           <img id="btnSearch" src="../public/search.svg" />
         </div>
         <img id="loader" src="../public/loader.png" />
       </div>
-      <div class="container"></div>
+      <div class="container">
+        <div class="main-info box"></div>
+        <div class="details box"></div>
+        <div class="hourly box"></div>
+      </div>
     </div>
 
     <script src="src/index.js"></script>
