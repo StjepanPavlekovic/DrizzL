@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="search hidden">
+      <div class="search">
         <div class="logo-container">
           <img src="../public/logo.png" />
           <h1>DrizzL</h1>
@@ -22,15 +22,22 @@
           />
           <img id="btnSearch" src="../public/search.svg" />
         </div>
-        <img id="loader" src="../public/loader.png" />
+        <img id="loader" class="hidden" src="../public/loader.png" />
       </div>
-      <div class="container">
+      <div class="container hidden">
         <div class="main-info box"></div>
         <div class="details box"></div>
         <div class="hourly box"></div>
       </div>
+      <div id="loadingError" class="loading-error box hidden">
+        <img src="public/error.svg" />
+        <div style="border-left: 1px solid #4d4d4d8f; padding-left: 25px">
+          <h3>Unable to retrieve weather for given location.</h3>
+          <button id="btnRetry">Try again?</button>
+        </div>
+      </div>
     </div>
 
-    <script src="src/index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
