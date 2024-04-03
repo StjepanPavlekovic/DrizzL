@@ -4,8 +4,57 @@
 //Icons: https://openweathermap.org/img/wn/<icon_id>@2x.png
 
 //hourly:
-// https://api.openweathermap.org/data/2.5/forecast?q=zagreb&appid=0e027b1161722328666fd6ccbdcd1323
+//
+
+import Forecast from "../models/forecast";
 
 export default class WeatherService {
-  constructor() {}
+  constructor() {
+    this.appId = "0e027b1161722328666fd6ccbdcd1323";
+  }
+
+  getIconUrl(id) {
+    return `https://openweathermap.org/img/wn/${id}@2x.png`;
+  }
+
+  async getForecastForLocation(location) {
+    let forecast = null;
+
+    await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this.appId}`,
+      { mode: "cors" }
+    )
+      .then(async (res) => {
+        let data = await res.json();
+        console.log(data);
+        if (data && data.cod === 200) {
+          forecast = new Forecast(
+            data.main.temp,
+            data.main.temp_min,
+            data.main.temp_max,
+            data.wind.speed,
+            data.wind.deg,
+            this.getIconUrl(data.weather[0].icon),
+            null
+          );
+        } else {
+          return null;
+        }
+      })
+      .catch(() => {
+        return null;
+      });
+
+    return forecast;
+  }
+
+  async getHourlyForecastForLocation(location) {
+    let hourlyForecast = null;
+
+    await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${this.appId}`
+    ).then(async (res) => {
+      let data = await res.json();
+    });
+  }
 }

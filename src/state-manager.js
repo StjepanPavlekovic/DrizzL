@@ -2,6 +2,15 @@ export default class StateManager {
   constructor() {
     this.currentForecast = null;
     this.hourlyForecast = null;
+    this.currentCity = "";
+  }
+
+  getCurrentCity() {
+    return this.currentCity;
+  }
+
+  setCurrentCity(city) {
+    this.currentCity = city;
   }
 
   getCurrentForecast() {
