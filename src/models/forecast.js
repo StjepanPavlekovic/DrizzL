@@ -6,7 +6,8 @@ export default class Forecast {
     windSpeed,
     windDirection,
     icon,
-    time = null
+    time = null,
+    cityName
   ) {
     this.temp = temp;
     this.tempMin = tempMin;
@@ -15,5 +16,6 @@ export default class Forecast {
     this.windDirection = windDirection;
     this.icon = icon;
     this.time = time;
+    this.cityName = cityName;
   }
 }

@@ -8,12 +8,4 @@ const stateManager = new StateManager();
 const weatherService = new WeatherService();
 const uiManager = new UiManager(stateManager, weatherService);
 
-window.onload = async () => {
-  stateManager.setCurrentCity("Zagreb");
-
-  // let forecast = await weatherService.getForecastForLocation("Zagreb");
-
-  // let hourlyForecast = await weatherService.getHourlyForecastForLocation(
-  //   "Zagreb"
-  // );
-};
+window.onload = async () => {};

@@ -1,11 +1,3 @@
-//current for location:
-// https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1
-
-//Icons: https://openweathermap.org/img/wn/<icon_id>@2x.png
-
-//hourly:
-//
-
 import Forecast from "../models/forecast";
 
 export default class WeatherService {
@@ -26,7 +18,6 @@ export default class WeatherService {
     )
       .then(async (res) => {
         let data = await res.json();
-        console.log(data);
         if (data && data.cod === 200) {
           forecast = new Forecast(
             data.main.temp,
@@ -35,7 +26,8 @@ export default class WeatherService {
             data.wind.speed,
             data.wind.deg,
             this.getIconUrl(data.weather[0].icon),
-            null
+            null,
+            data.name
           );
         } else {
           return null;
@@ -49,12 +41,36 @@ export default class WeatherService {
   }
 
   async getHourlyForecastForLocation(location) {
-    let hourlyForecast = null;
+    let hourlyForecast = [];
 
     await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${this.appId}`
-    ).then(async (res) => {
-      let data = await res.json();
-    });
+    )
+      .then(async (res) => {
+        let data = await res.json();
+        console.log(data);
+        if (data && data.cod === "200") {
+          data.list.forEach((forecast) => {
+            hourlyForecast.push(
+              new Forecast(
+                forecast.main.temp,
+                forecast.main.temp_min,
+                forecast.main.temp_max,
+                forecast.wind.speed,
+                forecast.wind.deg,
+                this.getIconUrl(forecast.weather[0].icon),
+                forecast.dt_txt,
+                forecast.name
+              )
+            );
+          });
+        } else {
+          return null;
+        }
+      })
+      .catch(() => {
+        return null;
+      });
+    return hourlyForecast;
   }
 }
