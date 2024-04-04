@@ -9,6 +9,7 @@
   box-sizing: border-box;
   margin: 0;
   font-family: "Noto Sans", sans-serif;
+  text-shadow: var(--text-shadow-main);
 }
 
 body {
@@ -54,7 +55,22 @@ body {
   color: rgba(255, 255, 255, 0.95);
   letter-spacing: 1px;
   font-size: 1.3rem;
-  text-shadow: var(--text-shadow-main);
+  /* text-shadow: var(--text-shadow-main); */
+}
+
+.logo-container h1 {
+  position: relative;
+}
+
+.logo-container span {
+  font-size: 0.5rem;
+  display: block;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+  top: 10px;
+  opacity: 0.5;
 }
 
 .logo-container img {
@@ -306,6 +322,8 @@ body {
   background-color: #8a2be2;
   transition: 0.2s;
   user-select: none;
+
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .converter:hover {
