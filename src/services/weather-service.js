@@ -1,8 +1,10 @@
 import Forecast from "../models/forecast";
+import CachingService from "./caching-service";
 
 export default class WeatherService {
-  constructor() {
+  constructor(cachingService) {
     this.appId = "0e027b1161722328666fd6ccbdcd1323";
+    this.cachingService = cachingService;
   }
 
   getIconUrl(id) {
@@ -11,6 +13,11 @@ export default class WeatherService {
 
   async getForecastForLocation(location) {
     let forecast = null;
+
+    let cachedForecast = this.cachingService.getForecastForQuery(location);
+    if (cachedForecast && cachedForecast !== undefined) {
+      return cachedForecast.forecast;
+    }
 
     await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this.appId}`,
@@ -37,18 +44,23 @@ export default class WeatherService {
         return null;
       });
 
+    this.cachingService.addForecastToCache(location, forecast);
     return forecast;
   }
 
   async getHourlyForecastForLocation(location) {
     let hourlyForecast = [];
 
+    let cachedForecast = this.cachingService.getForecastForQuery(location);
+    if (cachedForecast.hourly && cachedForecast.hourly !== undefined) {
+      return cachedForecast.hourly;
+    }
+
     await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${this.appId}`
     )
       .then(async (res) => {
         let data = await res.json();
-        console.log(data);
         if (data && data.cod === "200") {
           data.list.forEach((forecast) => {
             hourlyForecast.push(
@@ -71,6 +83,7 @@ export default class WeatherService {
       .catch(() => {
         return null;
       });
+    this.cachingService.addHourlyForecastToCache(location, hourlyForecast);
     return hourlyForecast;
   }
 }

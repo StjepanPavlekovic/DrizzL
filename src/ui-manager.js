@@ -62,12 +62,13 @@ export default class UiManager {
   }
 
   sanitizeString(str) {
-    let stringToPurify =
-      str.charAt(0).toUpperCase() + str.toLowerCase().slice(1);
+    let stringToPurify = str.trim();
+    stringToPurify = stringToPurify.toLowerCase();
     return DOMPurify.sanitize(stringToPurify);
   }
 
   async loadForecastForLocation() {
+    if (txtLocation.value === "" || txtLocation.value.length > 20) return;
     if (!canSearch) {
       return;
     }

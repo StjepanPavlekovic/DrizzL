@@ -26,7 +26,7 @@ eval("/*! @license DOMPurify 3.0.11 | (c) Cure53 and other contributors | Releas
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ui_manager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ui-manager */ \"./src/ui-manager.js\");\n/* harmony import */ var _state_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./state-manager */ \"./src/state-manager.js\");\n/* harmony import */ var _services_weather_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/weather-service */ \"./src/services/weather-service.js\");\n/* harmony import */ var _services_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/storage-service */ \"./src/services/storage-service.js\");\n\n\n\n\n\nconst storageService = new _services_storage_service__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\nconst stateManager = new _state_manager__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nconst weatherService = new _services_weather_service__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\nconst uiManager = new _ui_manager__WEBPACK_IMPORTED_MODULE_0__[\"default\"](stateManager, weatherService);\n\nwindow.onload = async () => {};\n\n\n//# sourceURL=webpack://drizzl/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ui_manager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ui-manager */ \"./src/ui-manager.js\");\n/* harmony import */ var _state_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./state-manager */ \"./src/state-manager.js\");\n/* harmony import */ var _services_weather_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/weather-service */ \"./src/services/weather-service.js\");\n/* harmony import */ var _services_caching_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/caching-service */ \"./src/services/caching-service.js\");\n\n\n\n\n\nconst cachingService = new StorageService();\nconst stateManager = new _state_manager__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nconst weatherService = new _services_weather_service__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\nconst uiManager = new _ui_manager__WEBPACK_IMPORTED_MODULE_0__[\"default\"](stateManager, weatherService);\n\nwindow.onload = async () => {};\n\n\n//# sourceURL=webpack://drizzl/./src/index.js?");
 
 /***/ }),
 
@@ -41,14 +41,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/services/storage-service.js":
+/***/ "./src/services/caching-service.js":
 /*!*****************************************!*\
-  !*** ./src/services/storage-service.js ***!
+  !*** ./src/services/caching-service.js ***!
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ StorageService)\n/* harmony export */ });\nclass StorageService {\n  constructor() {}\n}\n\n\n//# sourceURL=webpack://drizzl/./src/services/storage-service.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ CachingService)\n/* harmony export */ });\nclass CachingService {\n  constructor() {\n    this.cachedForecast = null;\n    this.cachedHourlyForecast = null;\n  }\n}\n\n\n//# sourceURL=webpack://drizzl/./src/services/caching-service.js?");
 
 /***/ }),
 
