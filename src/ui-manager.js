@@ -142,16 +142,16 @@ export default class UiManager {
       spans.push(span);
     }
 
-    spans[0].innerHTML = `<img src="../public/max.svg">${this.getTempFormatted(
+    spans[0].innerHTML = `<img src="./public/max.svg">${this.getTempFormatted(
       forecast.tempMax
     )}`;
-    spans[1].innerHTML = `<img src="../public/min.svg">${this.getTempFormatted(
+    spans[1].innerHTML = `<img src="./public/min.svg">${this.getTempFormatted(
       forecast.tempMin
     )}`;
     spans[2].style.marginTop = "auto";
     spans[2].innerHTML = `${
       forecast.windSpeed
-    } ms <img src="../public/wind.svg" style="transform: rotate(${
+    } ms <img src="./public/wind.svg" style="transform: rotate(${
       forecast.windDirection - 180
     }deg); margin-left: auto">`;
     spans[2].style.marginTop = "15px";
